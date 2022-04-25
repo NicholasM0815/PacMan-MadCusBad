@@ -33,7 +33,7 @@ class InteractionLayer : Layer {
 
        
     }
-    func anogusSus {
+    func anogusSus() {
         print("he he he ha")
     }
     func touchingWall() {
