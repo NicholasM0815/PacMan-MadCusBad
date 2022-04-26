@@ -7,8 +7,28 @@ class Walls : RenderableEntity {
     let levelLeft:Rectangle
     let levelRight:Rectangle
     let levelBottom:Rectangle
-    let levelWall1:Rectangle
 
+    let levelWall1:Rectangle
+    let levelWall2:Rectangle
+    let levelWall3:Rectangle
+    let levelWall4:Rectangle
+    let levelWall5:Rectangle
+    let levelWall6:Rectangle
+    let levelWall7:Rectangle
+    let levelWall8:Rectangle
+    let levelWall9:Rectangle
+    let levelWall10:Rectangle
+    let levelWall11:Rectangle
+    let levelWall12:Rectangle
+    let levelWall13:Rectangle
+    let levelWall14:Rectangle
+    let levelWall15:Rectangle
+    let levelWall16:Rectangle
+    let levelWall17:Rectangle
+    let levelWall18:Rectangle
+    let levelWall19:Rectangle
+    let levelWall20:Rectangle
+    
     let levelFill:FillStyle
 
     let levelStroke:StrokeStyle
@@ -45,8 +65,11 @@ class Walls : RenderableEntity {
         levelBottom.rect = Rect(topLeft:Point(x:50, y:canvasSize.height - 60), size:Size(width:canvasSize.width - 100, height: 10))
         levelRectangles.append(levelBottom)
 
+        //do this wall boy
         levelWall1.rect = Rect(topLeft:Point(x:150, y:60), size:Size(width:10, height: canvasSize.height - 200))
         levelRectangles.append(levelWall1)
+
+        
     }
 
     override func render(canvas:Canvas) {
