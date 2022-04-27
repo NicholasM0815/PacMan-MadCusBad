@@ -20,24 +20,32 @@ class Background : RenderableEntity {
         rectangle = Rectangle(rect:Rect.zero, fillMode:.fill)
 
         var audios : Array<URL> = []
+
         
         guard let audioURL1 = URL(string:"https://upload.wikimedia.org/wikipedia/commons/transcoded/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga.mp3") else {
             fatalError("Failled to fetch Never Gonna Give You Up")
         }
 
-        audios.append(audioURL1)
+        //audios.append(audioURL1)
 
         guard let audioURL2 = URL(string:"https://upload.wikimedia.org/wikipedia/commons/transcoded/e/e3/Soviet_Anthem_Piano_Instrumental_%283_verses%29.ogg/Soviet_Anthem_Piano_Instrumental_%283_verses%29.ogg.mp3") else {
             fatalError("Failled to fetch Never Gonna Give You Up")
         }
 
-        audios.append(audioURL2)
+        //audios.append(audioURL2)
 
-        guard let audioURL3 = URL(string:"https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fe/Korobeiniki.mid/Korobeiniki.mid.mp3") else {
+        guard let audioURL3 = URL(string:"https://archive.org/download/Bee_Gees_Stayin_Alive/Bee_Gees_Stayin_Alive.mpg") else {
             fatalError("Failled to fetch Never Gonna Give You Up")
+            }
+            
+        
+
+        guard let audioURL4 = URL(string:"https://instrumentalfx.co/wp-content/upload/11/The-Benny-Hill-Show-Theme-Song.mp3") else {
+            fatalError("Failled to fetch Benny Hill Theme")
         }
 
-        audios.append(audioURL3)
+        //audios.append(audioURL3)
+        audios.append(audioURL4)
         
         audio = Audio(sourceURL:audios.randomElement()!, shouldLoop:true) 
         
