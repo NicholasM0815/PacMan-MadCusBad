@@ -33,12 +33,11 @@ class InteractionLayer : Layer {
 
        
     }
-<<<<<<< HEAD
-=======
-    func anogusSus() {
+    
+func anogusSus() {
         print("he he he ha")
     }
->>>>>>> 40f5b6d9182b6b749d39015bb3564150501761a7
+
     func touchingWall() {
         for rectangle in wall.levelRectangles{
             if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
