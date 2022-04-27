@@ -54,7 +54,6 @@ class Walls : RenderableEntity {
         levelWall11 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall12 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall13 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
-        levelWall13 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall14 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall15 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall16 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
