@@ -34,7 +34,7 @@ class Background : RenderableEntity {
 
         //audios.append(audioURL2)
 
-        guard let audioURL3 = URL(string:"https://archive.org/download/Bee_Gees_Stayin_Alive/Bee_Gees_Stayin_Alive.mpg") else {
+        guard let audioURL3 = URL(string:"https://drive.google.com/uc?export=download&id=0B4LOzioZvYiXb2FFWG5Qd1dFSmc") else {
             fatalError("Failled to fetch Never Gonna Give You Up")
             }
             
@@ -65,6 +65,6 @@ class Background : RenderableEntity {
             print("playing Audio")
             canvas.render(audio)
             didAudio = true
-        }
+            }
     }
 }
