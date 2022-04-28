@@ -15,6 +15,11 @@ class InteractionLayer : Layer {
     let player = Player()
 
     let coin = Coins()
+
+    let blueGhost = Ghost(color:Color(.deepskyblue))
+    let orangeGhost = Ghost(color:Color(.orange))
+    let redGhost = Ghost(color:Color(.red))
+    let pinkGhost = Ghost(color:Color(.hotpink))
     
     var enableHitTesting = false
 
@@ -25,6 +30,11 @@ class InteractionLayer : Layer {
         
         // We insert our RenderableEntities in the constructor
         // insert(entity:ball, at:.front)
+        insert(entity:blueGhost, at:.front)
+        insert(entity:orangeGhost, at:.front)
+        insert(entity:redGhost, at:.front)
+        insert(entity:pinkGhost, at:.front)
+        
         insert(entity:player, at:.front)
 
         insert(entity:coin, at:.back)
@@ -32,6 +42,12 @@ class InteractionLayer : Layer {
         insert(entity:wall, at:.back)
 
        
+    }
+
+    override func preSetup(canvasSize:Size, canvas:Canvas){
+        orangeGhost.ghostRect.topLeft = Point(x:200, y:200)
+        redGhost.ghostRect.topLeft = Point(x:200, y:400)
+        pinkGhost.ghostRect.topLeft = Point(x:200, y:600)
     }
     
 func anogusSus() {
@@ -68,6 +84,9 @@ func anogusSus() {
         }
     }
     override func postCalculate(canvas:Canvas){
+        orangeGhost.ghostRect.topLeft = Point(x:200, y:200)
+        redGhost.ghostRect.topLeft = Point(x:200, y:400)
+        pinkGhost.ghostRect.topLeft = Point(x:200, y:600)
         touchingWall()
         touchingCoin()
     }
