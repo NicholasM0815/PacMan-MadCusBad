@@ -88,7 +88,10 @@ class Walls : RenderableEntity {
         levelWall1.rect = Rect(topLeft:Point(x:150, y:60), size:Size(width:10, height: canvasSize.height - 200))
         levelRectangles.append(levelWall1)
 
-        
+
+        levelWall2.rect = Rect(topLeft:Point(x:200, y:60), size:Size(width:10, height: canvasSize.height - 200))
+        levelRectangles.append(levelWall2)
+
     }
 
     override func render(canvas:Canvas) {

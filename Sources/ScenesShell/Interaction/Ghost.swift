@@ -13,7 +13,7 @@ class Ghost : RenderableEntity {
     
     init(color: Color) {
         ghostColor = FillStyle(color:color)
-        ghostRect = Rect(topLeft:Point.zero, size:Size(width:40, height:40))
+        ghostRect = Rect(topLeft:Point.zero, size:Size(width:30, height:30))
         ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
         
         flashing = false
