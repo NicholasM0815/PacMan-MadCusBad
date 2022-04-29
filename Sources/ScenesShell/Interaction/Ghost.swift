@@ -3,8 +3,15 @@ import Scenes
 
 class Ghost : RenderableEntity {
 
-    let ghostColor:FillStyle
-    let ghostRect:Rect
+    let ghostColor1:FillStyle
+    let ghostColor2:FillStyle
+    let ghostColor3:FillStyle
+    let ghostColor4:FillStyle
+    let ghostRect1:Rect
+    let ghostRect2:Rect
+    let ghostRect3:Rect
+    let ghostRect4:Rect
+    
     
     init(color: Color) {
         ghostColor = FillStyle(color:color)
