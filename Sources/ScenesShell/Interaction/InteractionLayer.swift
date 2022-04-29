@@ -87,7 +87,6 @@ class InteractionLayer : Layer {
     override func postCalculate(canvas:Canvas){
         touchingWall()
         touchingCoin()
-        anogusSus()
     }
     /* override func postCalculate(canvas:Canvas) {
         if enableHitTesting {
