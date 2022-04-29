@@ -42,8 +42,10 @@ class Player : RenderableEntity, KeyDownHandler {
         move()
         canvas.render(FillStyle(color:Color(.yellow)), player)
     }
-
-
+    
+    func die() {
+        player.center = Point(x:99999,y:99999)
+    }
     func move(){
         switch direction{
         case 0:
