@@ -18,7 +18,7 @@ class Player : RenderableEntity, KeyDownHandler {
     init() {
         // Initialize Objectx
 
-        player = Ellipse(center:Point.zero, radiusX:20, radiusY:20, fillMode:.fillAndStroke)
+        player = Ellipse(center:Point.zero, radiusX:15, radiusY:15, fillMode:.fillAndStroke)
 
         //Key Objects
         upKey = "ArrowUp"

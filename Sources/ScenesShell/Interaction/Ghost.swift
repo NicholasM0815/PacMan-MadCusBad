@@ -3,6 +3,7 @@ import Scenes
 
 class Ghost : RenderableEntity {
 
+    
     let ghostColor:FillStyle
     var ghostRect:Rect
     var ghostRectangle:Rectangle
@@ -13,7 +14,7 @@ class Ghost : RenderableEntity {
     
     init(color: Color) {
         ghostColor = FillStyle(color:color)
-        ghostRect = Rect(topLeft:Point.zero, size:Size(width:40, height:40))
+        ghostRect = Rect(topLeft:Point.zero, size:Size(width:30, height:30))
         ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
         
         flashing = false
@@ -34,6 +35,19 @@ class Ghost : RenderableEntity {
 
     func move(to point:Point){
         self.ghostRect.topLeft = point
+    }
+
+    func ghostUp() {
+        self.ghostRect.topLeft.y -= 7
+    }
+    func ghosytDown() {
+        self.ghostRect.topLeft.y += 7
+    }
+    func ghostLeft() {
+        self.ghostRect.topLeft.x -= 7
+    }
+    func ghostRight() {
+        self.ghostRect.topLeft.x += 7
     }
 
     override func render(canvas:Canvas){

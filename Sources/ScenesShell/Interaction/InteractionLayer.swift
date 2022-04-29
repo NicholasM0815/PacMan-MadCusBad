@@ -56,10 +56,10 @@ class InteractionLayer : Layer {
         pinkGhost.flash(for:30)
     }
     
-func anogusSus() {
+    func anogusSus() {
         print("he he he ha")
     }
-
+    
     func touchingWall() {
         for rectangle in wall.levelRectangles{
             if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
@@ -92,6 +92,7 @@ func anogusSus() {
     override func postCalculate(canvas:Canvas){
         touchingWall()
         touchingCoin()
+        anogusSus()
     }
     /* override func postCalculate(canvas:Canvas) {
         if enableHitTesting {
