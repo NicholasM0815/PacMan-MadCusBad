@@ -38,7 +38,11 @@ class Ghost : RenderableEntity {
     }
 
     override func setup(canvasSize:Size, canvas:Canvas) {
-        ghostRect.topLeft = canvasSize.center - Point(x:ghostRect.size.width/2, y:ghostRect.size.height/2)
+        //empty
+    }
+
+    func move(to point:Point){
+        self.ghostRect.topLeft = point
     }
 
     override func render(canvas:Canvas){
