@@ -45,9 +45,10 @@ class InteractionLayer : Layer {
     }
 
     override func preSetup(canvasSize:Size, canvas:Canvas){
-        orangeGhost.ghostRect.topLeft = Point(x:200, y:200)
-        redGhost.ghostRect.topLeft = Point(x:200, y:400)
-        pinkGhost.ghostRect.topLeft = Point(x:200, y:600)
+        blueGhost.move(to:canvasSize.center - Point(x:blueGhost.ghostRect.size.width/2, y:blueGhost.ghostRect.size.height/2))
+        orangeGhost.move(to:Point(x:200, y:200))
+        redGhost.move(to:Point(x:200, y:400))
+        pinkGhost.move(to:Point(x:200, y:600))
     }
     
 func anogusSus() {
@@ -84,9 +85,6 @@ func anogusSus() {
         }
     }
     override func postCalculate(canvas:Canvas){
-        orangeGhost.ghostRect.topLeft = Point(x:200, y:200)
-        redGhost.ghostRect.topLeft = Point(x:200, y:400)
-        pinkGhost.ghostRect.topLeft = Point(x:200, y:600)
         touchingWall()
         touchingCoin()
     }
