@@ -49,6 +49,11 @@ class InteractionLayer : Layer {
         orangeGhost.move(to:Point(x:200, y:200))
         redGhost.move(to:Point(x:200, y:400))
         pinkGhost.move(to:Point(x:200, y:600))
+
+        blueGhost.flash(for: 30)
+        orangeGhost.flash(for: 30)
+        redGhost.flash(for: 30)
+        pinkGhost.flash(for:30)
     }
     
 func anogusSus() {
