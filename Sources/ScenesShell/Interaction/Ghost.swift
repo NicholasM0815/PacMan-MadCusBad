@@ -53,8 +53,12 @@ class Ghost : RenderableEntity {
     func ghostDie(canvasSize:Size) {
         self.ghostRect.topLeft = canvasSize.center
     }
+    
 
-        
+    func getCloser() {
+        print("placeholder text")
+    }
+    
     override func render(canvas:Canvas){
         ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
         if flashing{

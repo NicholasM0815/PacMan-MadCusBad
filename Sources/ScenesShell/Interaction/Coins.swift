@@ -27,7 +27,7 @@ class Coins : RenderableEntity {
         coin.center = Point(x:100, y:100)
         let xCoins = 40
         let yCoins = 19
-        for y in 0...yCoins{
+/*        for y in 0...yCoins{
             for x in 0...xCoins{
                 coin.center += Point(x:40, y:0)
                 coins.append((Ellipse(center:coin.center, radiusX:5, radiusY:5, fillMode:.fillAndStroke), true))
@@ -35,7 +35,7 @@ class Coins : RenderableEntity {
             coin.center += Point(x:-((xCoins+1) * 40), y:40)
         }
     }
-
+*/
     override func render(canvas:Canvas){
         for c in coins{
             if c.1 == true{
