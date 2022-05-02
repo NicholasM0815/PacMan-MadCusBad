@@ -14,7 +14,7 @@ class InteractionLayer : Layer {
 
     let player = Player()
 
-    let coin = Coins()
+//    let coin = Coins()
 
     let blueGhost = Ghost(color:Color(.deepskyblue))
     let orangeGhost = Ghost(color:Color(.orange))
@@ -37,7 +37,7 @@ class InteractionLayer : Layer {
         
         insert(entity:player, at:.front)
 
-        insert(entity:coin, at:.back)
+  //      insert(entity:coin, at:.back)
         
         insert(entity:wall, at:.back)
 
@@ -77,16 +77,16 @@ class InteractionLayer : Layer {
     }
 
     
-    func touchingCoin() {
+    /*func touchingCoin() {
         for i in 0...coin.coins.count-1{
             if player.player.boundingRect().containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
                 coin.coins[i].1 = false
             }
         }
-    }
+    }  */
     override func postCalculate(canvas:Canvas){
         touchingWall()
-        touchingCoin()
+       // touchingCoin()
     }
     /* override func postCalculate(canvas:Canvas) {
         if enableHitTesting {
