@@ -50,9 +50,15 @@ class Ghost : RenderableEntity {
         self.ghostRect.topLeft.x += 7
     }
 
+
+
+    
     func ghostDie(canvasSize:Size) {
         self.ghostRect.topLeft = canvasSize.center
     }
+
+
+
     
     func topBoundingRect() -> Rect{
         return Rect(topLeft:self.ghostRect.topLeft + Point(x:0, y:self.ghostRect.size.height), size:self.ghostRect.size)
