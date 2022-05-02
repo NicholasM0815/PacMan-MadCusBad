@@ -54,6 +54,23 @@ class Ghost : RenderableEntity {
         self.ghostRect.topLeft = canvasSize.center
     }
 
+    func topBoundingRect() -> Rect{
+        return Rect(topLeft:self.ghostRect.topLeft + Point(x:0, y:self.ghostRect.size.height), size:self.ghostRect.size)
+    }
+    
+    func bottomBoundingRect() -> Rect{
+        return Rect(topLeft:self.ghostRect.bottomLeft, size:self.ghostRect.size)
+    }
+
+    func leftBoundingRect() -> Rect{
+        return Rect(topLeft:self.ghostRect.topLeft + Point(x:self.ghostRect.size.width, y:0), size:self.ghostRect.size)
+    }
+
+    func rightBoundingRect() -> Rect{
+        return Rect(topLeft:self.ghostRect.topRight, size:self.ghostRect.size)
+    }
+
+
         
     override func render(canvas:Canvas){
         ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
