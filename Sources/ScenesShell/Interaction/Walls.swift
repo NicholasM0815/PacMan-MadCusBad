@@ -1,3 +1,4 @@
+
 import Igis
 import Scenes
 
@@ -92,6 +93,16 @@ class Walls : RenderableEntity {
         levelWall2.rect = Rect(topLeft:Point(x:200, y:60), size:Size(width:10, height: canvasSize.height - 200))
         levelRectangles.append(levelWall2)
 
+        levelWall3.rect = Rect(topLeft:Point(x:250, y:60), size:Size(width:10, height: canvasSize.height - 200))
+        levelRectangles.append(levelWall3)
+
+        levelWall4.rect = Rect(topLeft:Point(x:300, y:60), size:Size(width:10, height: canvasSize.height - 200))
+        levelRectangles.append(levelWall4)
+
+        levelWall5.rect = Rect(topLeft:Point(x:350, y:60), size:Size(width:10, height: canvasSize.height - 200))
+        levelRectangles.append(levelWall5)
+
+        
     }
 
     override func render(canvas:Canvas) {
