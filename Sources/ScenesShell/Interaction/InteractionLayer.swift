@@ -56,10 +56,10 @@ class InteractionLayer : Layer {
     }
 
     override func preSetup(canvasSize:Size, canvas:Canvas){
-        blueGhost.move(to:canvasSize.center - Point(x:blueGhost.ghostRect.size.width/2, y:blueGhost.ghostRect.size.height/2))
-        orangeGhost.move(to:Point(x:200, y:200))
-        redGhost.move(to:Point(x:200, y:400))
-        pinkGhost.move(to:Point(x:200, y:600))
+        blueGhost.move(to:canvasSize.center - Point(x:blueGhost.ghostRect.size.width, y:blueGhost.ghostRect.size.height * 2))
+        orangeGhost.move(to: canvasSize.center - Point(x:orangeGhost.ghostRect.size.width * 2,y:orangeGhost.ghostRect.size.height * 2))
+        redGhost.move(to:canvasSize.center - Point(x:0, y:redGhost.ghostRect.size.height * 2))
+        pinkGhost.move(to:canvasSize.center - Point(x:pinkGhost.ghostRect.size.width * -1, y:pinkGhost.ghostRect.size.height * 2))
 
         blueGhost.flash(for: 30)
         orangeGhost.flash(for: 30)
