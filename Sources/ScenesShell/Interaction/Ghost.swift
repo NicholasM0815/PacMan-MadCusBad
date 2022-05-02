@@ -50,6 +50,11 @@ class Ghost : RenderableEntity {
         self.ghostRect.topLeft.x += 7
     }
 
+    func ghostDie(canvasSize:Size) {
+        self.ghostRect.topLeft = canvasSize.center
+    }
+
+        
     override func render(canvas:Canvas){
         ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
         if flashing{
