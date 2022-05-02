@@ -38,16 +38,16 @@ class Ghost : RenderableEntity {
     }
 
     func ghostUp() {
-        self.ghostRect.topLeft.y -= 7
+        self.ghostRect.topLeft.y -= 5
     }
     func ghostDown() {
-        self.ghostRect.topLeft.y += 7
+        self.ghostRect.topLeft.y += 5
     }
     func ghostLeft() {
-        self.ghostRect.topLeft.x -= 7
+        self.ghostRect.topLeft.x -= 5
     }
     func ghostRight() {
-        self.ghostRect.topLeft.x += 7
+        self.ghostRect.topLeft.x += 5
     }
 
     func ghostDie(canvasSize:Size) {
