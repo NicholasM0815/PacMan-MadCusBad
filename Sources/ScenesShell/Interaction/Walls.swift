@@ -102,7 +102,21 @@ class Walls : RenderableEntity {
         levelWall5.rect = Rect(topLeft:Point(x:canvasSize.center.x + 60, y:350), size:Size(width:50, height:10))
         levelRectangles.append(levelWall5)
 
-        
+        levelWall6.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:250), size:Size(width:210, height: 10))
+        levelRectangles.append(levelWall6)
+
+        levelWall7.rect = Rect(topLeft:Point(x:canvasSize.center.x, y:250), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall7)
+
+        levelWall8.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:450), size:Size(width:210, height: 10))
+        levelRectangles.append(levelWall8)
+
+        levelWall9.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:450), size:Size(width:210, height: 10))
+        levelRectangles.append(levelWall9)
+
+        levelWall10.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:450), size:Size(width:210, height: 10))
+        levelRectangles.append(levelWall10)
+
     }
 
     override func render(canvas:Canvas) {
