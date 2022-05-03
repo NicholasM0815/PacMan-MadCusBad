@@ -110,29 +110,26 @@ class InteractionLayer : Layer {
 
         blueCenter = blueGhost.ghostRect.center
 
+        canMoveRight = true
+        canMoveLeft = true
+        canMoveUp = true
+        canMoveDown = true
+        
         for rectangle in wall.levelRectangles{
-            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact){
-                canMoveLeft = false
-            }else{
-                canMoveLeft = true
-            }
             if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
+                canMoveLeft = false
+            }
+            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact){
                 canMoveRight = false
-            }else{
-                canMoveRight = true
             }
             if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact){
                 canMoveUp = false
-            }else{
-                canMoveUp = true
             }
             if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact){
                 canMoveDown = false
-            }else{
-                canMoveDown = true
             }
+            
         }
-        
         if (playerCenter - blueCenter).x < 0 && canMoveLeft{
             blueGhost.ghostLeft()
         }
@@ -146,6 +143,7 @@ class InteractionLayer : Layer {
             blueGhost.ghostDown()
         }
                 
+        
         
         touchingWall()
         // touchingCoin()

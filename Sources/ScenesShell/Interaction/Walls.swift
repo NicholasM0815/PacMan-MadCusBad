@@ -89,7 +89,6 @@ class Walls : RenderableEntity {
         levelWall1.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:450), size:Size(width:210, height: 10))
         levelRectangles.append(levelWall1)
 
-
         levelWall2.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:350), size:Size(width:10, height: 100))
         levelRectangles.append(levelWall2)
 
@@ -101,6 +100,9 @@ class Walls : RenderableEntity {
 
         levelWall5.rect = Rect(topLeft:Point(x:canvasSize.center.x + 60, y:350), size:Size(width:50, height:10))
         levelRectangles.append(levelWall5)
+
+        levelWall6.rect = Rect(topLeft:Point(x:700, y:0), size:Size(width:10, height:700))
+        levelRectangles.append(levelWall6)
 
         
     }

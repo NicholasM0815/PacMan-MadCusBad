@@ -61,7 +61,7 @@ class Ghost : RenderableEntity {
 
     
     func topBoundingRect() -> Rect{
-        return Rect(topLeft:self.ghostRect.topLeft + Point(x:0, y:self.ghostRect.size.height), size:self.ghostRect.size)
+        return Rect(topLeft:self.ghostRect.topLeft - Point(x:0, y:self.ghostRect.size.height), size:self.ghostRect.size)
     }
     
     func bottomBoundingRect() -> Rect{
@@ -69,7 +69,7 @@ class Ghost : RenderableEntity {
     }
 
     func leftBoundingRect() -> Rect{
-        return Rect(topLeft:self.ghostRect.topLeft + Point(x:self.ghostRect.size.width, y:0), size:self.ghostRect.size)
+        return Rect(topLeft:self.ghostRect.topLeft - Point(x:self.ghostRect.size.width, y:0), size:Size(width:1, height:self.ghostRect.size.height))
     }
 
     func rightBoundingRect() -> Rect{
@@ -77,8 +77,8 @@ class Ghost : RenderableEntity {
     }
     
     override func render(canvas:Canvas){
-        ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
-        if flashing{
+       ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
+       if flashing{
             if flashFor % 5 == 0 {
                 canvas.render(flashColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
             }else{
@@ -90,6 +90,7 @@ class Ghost : RenderableEntity {
             }
         }else{
             canvas.render(ghostColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
-        }
+       }
+       //canvas.render(FillStyle(color:Color(.white)), Rectangle(rect:self.bottomBoundingRect(), fillMode:.fill))
     }
 }
