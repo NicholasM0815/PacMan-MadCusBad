@@ -69,7 +69,7 @@ class Ghost : RenderableEntity {
     }
 
     func leftBoundingRect() -> Rect{
-        return Rect(topLeft:self.ghostRect.topLeft - Point(x:self.ghostRect.size.width, y:0), size:Size(width:1, height:self.ghostRect.size.height))
+        return Rect(topLeft:self.ghostRect.topLeft - Point(x:self.ghostRect.size.width, y:0), size:self.ghostRect.size)
     }
 
     func rightBoundingRect() -> Rect{
