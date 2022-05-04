@@ -29,6 +29,11 @@ class Walls : RenderableEntity {
     let levelWall18:Rectangle
     let levelWall19:Rectangle
     let levelWall20:Rectangle
+    let levelWall21:Rectangle
+    let levelWall22:Rectangle
+    let levelWall23:Rectangle
+    let levelWall24:Rectangle
+    let levelWall25:Rectangle
     
     let levelFill:FillStyle
 
@@ -62,6 +67,16 @@ class Walls : RenderableEntity {
         levelWall18 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall19 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall20 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall21 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall22 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall23 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall24 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall25 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+
+
+
+
+
         
         levelFill = FillStyle(color:Color(.blue))
         levelStroke = StrokeStyle(color:Color(.blue))
@@ -113,13 +128,44 @@ class Walls : RenderableEntity {
         levelWall9.rect = Rect(topLeft:Point(x:canvasSize.center.x, y:550), size:Size(width:10, height: 100))
         levelRectangles.append(levelWall9)
 
-        levelWall10.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:450), size:Size(width:210, height: 10))
+        levelWall10.rect = Rect(topLeft:Point(x:canvasSize.center.x - 200, y:450), size:Size(width:10, height: 250))
         levelRectangles.append(levelWall10)
         
-       
+        levelWall11.rect = Rect(topLeft:Point(x:canvasSize.center.x - 200, y:550), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall11)
 
-        
+         levelWall12.rect = Rect(topLeft:Point(x:canvasSize.center.x + 200, y:450), size:Size(width:10, height: 250))
+        levelRectangles.append(levelWall12)
+
+         levelWall13.rect = Rect(topLeft:Point(x:canvasSize.center.x + 100, y:550), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall13)
+
+         levelWall14.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:550), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall14)
+
+         levelWall15.rect = Rect(topLeft:Point(x:canvasSize.center.x + 400, y:350), size:Size(width:10, height: 210))
+         levelRectangles.append(levelWall15)
+
+          levelWall16.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:250), size:Size(width:10, height: 200))
+        levelRectangles.append(levelWall16)
+
+        levelWall17.rect = Rect(topLeft:Point(x:canvasSize.center.x + 200, y:350), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall17)
+
+         levelWall18.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:350), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall18)
+
+         levelWall19.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:350), size:Size(width:10, height: 210))
+        levelRectangles.append(levelWall19)
+
+         levelWall20.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:250), size:Size(width:10, height: 200))
+        levelRectangles.append(levelWall20)
+
+        levelWall21.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:550), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall21)
+
     }
+    
 
     override func render(canvas:Canvas) {
         for rect in levelRectangles{

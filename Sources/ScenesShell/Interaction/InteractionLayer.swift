@@ -116,16 +116,20 @@ class InteractionLayer : Layer {
         canMoveDown = true
         
         for rectangle in wall.levelRectangles{
+<<<<<<< HEAD
             if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft)  && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
+=======
+            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
+>>>>>>> 2974da16d73ceb43f64ff615dcfe1606f65477f0
                 canMoveLeft = false
             }
-            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact){
+            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
                 canMoveRight = false
             }
-            if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact){
+            if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && (rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsFully)){
                 canMoveUp = false
             }
-            if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact){
+            if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && (rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsFully)){
                 canMoveDown = false
             }
             
