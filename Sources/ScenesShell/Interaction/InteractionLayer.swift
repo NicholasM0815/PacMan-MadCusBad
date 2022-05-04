@@ -61,10 +61,10 @@ class InteractionLayer : Layer {
     }
 
     override func preSetup(canvasSize:Size, canvas:Canvas){
-        blueGhost.move(to:canvasSize.center - Point(x:blueGhost.ghostRect.size.width/2, y:blueGhost.ghostRect.size.height/2))
-        orangeGhost.move(to:Point(x:200, y:200))
-        redGhost.move(to:Point(x:200, y:400))
-        pinkGhost.move(to:Point(x:200, y:600))
+        blueGhost.move(to:canvasSize.center - Point(x: blueGhost.ghostRect.size.width, y: 2 *  blueGhost.ghostRect.size.height))
+        orangeGhost.move(to:canvasSize.center - Point(x: -1 * blueGhost.ghostRect.size.width, y: 2 *  blueGhost.ghostRect.size.height))
+        redGhost.move(to:canvasSize.center - Point(x: 2 * blueGhost.ghostRect.size.width, y: 2 *  blueGhost.ghostRect.size.height))
+        pinkGhost.move(to:canvasSize.center - Point(x: -2 * blueGhost.ghostRect.size.width, y: 2 *  blueGhost.ghostRect.size.height))
 
         blueGhost.flash(for: 30)
         orangeGhost.flash(for: 30)
@@ -116,7 +116,11 @@ class InteractionLayer : Layer {
         canMoveDown = true
         
         for rectangle in wall.levelRectangles{
+<<<<<<< HEAD
+            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft)  && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
+=======
             if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
+>>>>>>> 2974da16d73ceb43f64ff615dcfe1606f65477f0
                 canMoveLeft = false
             }
             if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
@@ -130,12 +134,19 @@ class InteractionLayer : Layer {
             }
             
         }
+<<<<<<< HEAD
         if (playerCenter - blueCenter).x < 0{
             if canMoveLeft == true{
                 blueGhost.ghostLeft()
             }else if canMoveUp == true{
                 blueGhost.ghostUp()
             }
+=======
+        
+         
+        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
+            blueGhost.ghostLeft()
+>>>>>>> 03f3978b0de546eacebd1eb99cc32384a647720c
         }
         else if (playerCenter - blueCenter).x > 0 && canMoveRight{
             blueGhost.ghostRight()
