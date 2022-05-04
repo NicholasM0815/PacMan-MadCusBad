@@ -131,17 +131,19 @@ class InteractionLayer : Layer {
             
         }
         if (playerCenter - blueCenter).x < 0{
-            if canMoveLeft{
+            if canMoveLeft == true{
                 blueGhost.ghostLeft()
+            }else if canMoveUp == true{
+                blueGhost.ghostUp()
             }
         }
-        if (playerCenter - blueCenter).x > 0 && canMoveRight{
+        else if (playerCenter - blueCenter).x > 0 && canMoveRight{
             blueGhost.ghostRight()
         }
-        if (playerCenter - blueCenter).y < 0 && canMoveUp{
+        else if (playerCenter - blueCenter).y < 0 && canMoveUp{
             blueGhost.ghostUp()
         }
-        if (playerCenter - blueCenter).y > 0 && canMoveDown{
+        else if (playerCenter - blueCenter).y > 0 && canMoveDown{
             blueGhost.ghostDown()
         }
                 
