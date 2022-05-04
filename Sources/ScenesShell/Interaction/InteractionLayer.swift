@@ -23,8 +23,24 @@ class InteractionLayer : Layer {
     
     var enableHitTesting = false
 
+    var playerCenter:Point
+    var blueCenter:Point
 
+    var canMoveLeft:Bool
+    var canMoveRight:Bool
+    var canMoveUp:Bool
+    var canMoveDown:Bool
+    
     init() {
+
+        playerCenter = Point.zero
+        blueCenter = Point.zero
+
+        canMoveLeft = false
+        canMoveRight = false
+        canMoveUp = false
+        canMoveDown = false
+        
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Interaction")
         
@@ -45,10 +61,10 @@ class InteractionLayer : Layer {
     }
 
     override func preSetup(canvasSize:Size, canvas:Canvas){
-        blueGhost.move(to:canvasSize.center - Point(x:blueGhost.ghostRect.size.width, y:blueGhost.ghostRect.size.height * 2))
-        orangeGhost.move(to: canvasSize.center - Point(x:orangeGhost.ghostRect.size.width * 2,y:orangeGhost.ghostRect.size.height * 2))
-        redGhost.move(to:canvasSize.center - Point(x:0, y:redGhost.ghostRect.size.height * 2))
-        pinkGhost.move(to:canvasSize.center - Point(x:pinkGhost.ghostRect.size.width * -1, y:pinkGhost.ghostRect.size.height * 2))
+        blueGhost.move(to:canvasSize.center - Point(x:blueGhost.ghostRect.size.width/2, y:blueGhost.ghostRect.size.height/2))
+        orangeGhost.move(to:Point(x:200, y:200))
+        redGhost.move(to:Point(x:200, y:400))
+        pinkGhost.move(to:Point(x:200, y:600))
 
         blueGhost.flash(for: 30)
         orangeGhost.flash(for: 30)
@@ -90,9 +106,51 @@ class InteractionLayer : Layer {
         }
     }  */
     override func postCalculate(canvas:Canvas){
+        playerCenter = player.player.center
+
+        blueCenter = blueGhost.ghostRect.center
+
+        canMoveRight = true
+        canMoveLeft = true
+        canMoveUp = true
+        canMoveDown = true
+        
+        for rectangle in wall.levelRectangles{
+            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
+                canMoveLeft = false
+            }
+            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact){
+                canMoveRight = false
+            }
+            if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact){
+                canMoveUp = false
+            }
+            if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact){
+                canMoveDown = false
+            }
+            
+        }
+        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
+            blueGhost.ghostLeft()
+        }
+        if (playerCenter - blueCenter).x > 0 && canMoveRight{
+            blueGhost.ghostRight()
+        }
+        if (playerCenter - blueCenter).y < 0 && canMoveUp{
+            blueGhost.ghostUp()
+        }
+        if (playerCenter - blueCenter).y > 0 && canMoveDown{
+            blueGhost.ghostDown()
+        }
+                
+        
+        
         touchingWall()
-       // touchingCoin()
+        // touchingCoin()
+
+        
     }
+
     /* override func postCalculate(canvas:Canvas) {
         if enableHitTesting {
             let leftPaddleBoundingRect = leftPaddle.boundingRect()

@@ -51,13 +51,13 @@ class Player : RenderableEntity, KeyDownHandler {
         case 0:
             player.center += Point(x:0, y:0)
         case 1:
-            player.center += Point(x:0, y:-5)
+            player.center += Point(x:0, y:-10)
         case 2:
-            player.center += Point(x:5, y:0)
+            player.center += Point(x:10, y:0)
         case 3:
-            player.center += Point(x:0, y:5)
+            player.center += Point(x:0, y:10)
         case 4:
-            player.center += Point(x:-5, y:0)
+            player.center += Point(x:-10, y:0)
         default:
             player.center += Point(x:0, y:0)
         }

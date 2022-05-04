@@ -21,6 +21,7 @@ class Background : RenderableEntity {
 
         var audios : Array<URL> = []
 
+        /*
         
         guard let audioURL1 = URL(string:"https://upload.wikimedia.org/wikipedia/commons/transcoded/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga.mp3") else {
             fatalError("Failled to fetch Never Gonna Give You Up")
@@ -38,7 +39,7 @@ class Background : RenderableEntity {
             fatalError("Failled to fetch Never Gonna Give You Up")
             }
             
-        
+        */
 
         guard let audioURL4 = URL(string:"https://instrumentalfx.co/wp-content/upload/11/The-Benny-Hill-Show-Theme-Song.mp3") else {
             fatalError("Failled to fetch Benny Hill Theme")
