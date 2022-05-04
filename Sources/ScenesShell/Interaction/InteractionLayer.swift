@@ -130,8 +130,10 @@ class InteractionLayer : Layer {
             }
             
         }
-        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
-            blueGhost.ghostLeft()
+        if (playerCenter - blueCenter).x < 0{
+            if canMoveLeft{
+                blueGhost.ghostLeft()
+            }
         }
         if (playerCenter - blueCenter).x > 0 && canMoveRight{
             blueGhost.ghostRight()
