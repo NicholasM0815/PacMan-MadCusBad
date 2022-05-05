@@ -195,31 +195,31 @@ class Walls : RenderableEntity {
         levelWall11.rect = Rect(topLeft:Point(x:canvasSize.center.x - 200, y:550), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall11)
 
-         levelWall12.rect = Rect(topLeft:Point(x:canvasSize.center.x + 200, y:450), size:Size(width:10, height: 250))
+        levelWall12.rect = Rect(topLeft:Point(x:canvasSize.center.x + 200, y:450), size:Size(width:10, height: 250))
         levelRectangles.append(levelWall12)
 
-         levelWall13.rect = Rect(topLeft:Point(x:canvasSize.center.x + 100, y:550), size:Size(width:100, height: 10))
+        levelWall13.rect = Rect(topLeft:Point(x:canvasSize.center.x + 100, y:550), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall13)
 
-         levelWall14.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:550), size:Size(width:100, height: 10))
+        levelWall14.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:550), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall14)
 
-         levelWall15.rect = Rect(topLeft:Point(x:canvasSize.center.x + 400, y:350), size:Size(width:10, height: 210))
-         levelRectangles.append(levelWall15)
+        levelWall15.rect = Rect(topLeft:Point(x:canvasSize.center.x + 400, y:350), size:Size(width:10, height: 210))
+        levelRectangles.append(levelWall15)
 
-          levelWall16.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:250), size:Size(width:10, height: 200))
+        levelWall16.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:250), size:Size(width:10, height: 200))
         levelRectangles.append(levelWall16)
 
         levelWall17.rect = Rect(topLeft:Point(x:canvasSize.center.x + 200, y:350), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall17)
 
-         levelWall18.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:350), size:Size(width:100, height: 10))
+        levelWall18.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:350), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall18)
 
-         levelWall19.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:350), size:Size(width:10, height: 210))
+        levelWall19.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:350), size:Size(width:10, height: 210))
         levelRectangles.append(levelWall19)
 
-         levelWall20.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:250), size:Size(width:10, height: 200))
+        levelWall20.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:250), size:Size(width:10, height: 200))
         levelRectangles.append(levelWall20)
 
         levelWall21.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:550), size:Size(width:100, height: 10))

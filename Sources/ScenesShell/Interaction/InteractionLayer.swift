@@ -104,8 +104,9 @@ class InteractionLayer : Layer {
                 coin.coins[i].1 = false
             }
         }
-    }  */
-    override func postCalculate(canvas:Canvas){
+        }  */
+
+    func pathFind(rect:Rect) -> String{
         playerCenter = player.player.center
 
         blueCenter = blueGhost.ghostRect.center
@@ -114,12 +115,8 @@ class InteractionLayer : Layer {
         canMoveLeft = true
         canMoveUp = true
         canMoveDown = true
-        
         for rectangle in wall.levelRectangles{
-            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft)  && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
-
             if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
-
                 canMoveLeft = false
             }
             if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
@@ -132,19 +129,63 @@ class InteractionLayer : Layer {
                 canMoveDown = false
             }
             
+        }
+        return "ok"
+    }
+    override func postCalculate(canvas:Canvas){
+        playerCenter = player.player.center
+
+        blueCenter = blueGhost.ghostRect.center
+
+        canMoveRight = true
+        canMoveLeft = true
+        canMoveUp = true
+        canMoveDown = true
+        
+        for rectangle in wall.levelRectangles{
+<<<<<<< HEAD
+            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft)  && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
+
+            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
+
+=======
+            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
+>>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
+                canMoveLeft = false
+            }
+            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
+                canMoveRight = false
+            }
+            if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && (rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsFully)){
+                canMoveUp = false
+            }
+            if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && (rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsFully)){
+                canMoveDown = false
+            }
+            
+<<<<<<< HEAD
        
+=======
+        }
+>>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
         if (playerCenter - blueCenter).x < 0{
             if canMoveLeft == true{
                 blueGhost.ghostLeft()
             }else if canMoveUp == true{
                 blueGhost.ghostUp()
             }
+<<<<<<< HEAD
 
         
          
         if (playerCenter - blueCenter).x < 0 && canMoveLeft{
             blueGhost.ghostLeft()
 
+=======
+        }
+        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
+            blueGhost.ghostLeft()
+>>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
         }
         else if (playerCenter - blueCenter).x > 0 && canMoveRight{
             blueGhost.ghostRight()
@@ -155,41 +196,17 @@ class InteractionLayer : Layer {
         else if (playerCenter - blueCenter).y > 0 && canMoveDown{
             blueGhost.ghostDown()
         }
-                
-        
-        
-        touchingWall()
         // touchingCoin()
-
-        
-    }
-
-    /* override func postCalculate(canvas:Canvas) {
-        if enableHitTesting {
-            let leftPaddleBoundingRect = leftPaddle.boundingRect()
-            let rightPaddleBoundingRect = rightPaddle.boundingRect()
-            
-            let ballBoundingRect = ball.boundingRect()
-            
-            // calculate the balls position relative to the
-            // specified paddle to determine if they have come into contact.
-            let leftPaddleHitTest = leftPaddleBoundingRect.containment(target:ballBoundingRect)
-            let rightPaddleHitTest = rightPaddleBoundingRect.containment(target:ballBoundingRect)
-            
-            // If the hit results specify the ball has come into contact
-            // with the paddle, we want to change its velocity.
-            if leftPaddleHitTest.contains(.contact) && ball.velocityX < 0 {
-                ball.velocityX = -ball.velocityX
-            } else if rightPaddleHitTest.contains(.contact) && ball.velocityX > 0 {
-                ball.velocityX = -ball.velocityX
-            }
-        }
-    }
-     */
+        touchingWall()
 
     
+
+    
+<<<<<<< HEAD
      
             }
         }
+=======
+>>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
     }
 }
