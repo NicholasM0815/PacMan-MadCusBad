@@ -34,6 +34,36 @@ class Walls : RenderableEntity {
     let levelWall23:Rectangle
     let levelWall24:Rectangle
     let levelWall25:Rectangle
+    let levelWall26:Rectangle
+    let levelWall27:Rectangle
+    let levelWall28:Rectangle
+    let levelWall29:Rectangle
+    let levelWall30:Rectangle
+    let levelWall31:Rectangle
+    let levelWall32:Rectangle
+    let levelWall33:Rectangle
+    let levelWall34:Rectangle
+    let levelWall35:Rectangle
+    let levelWall36:Rectangle
+    let levelWall37:Rectangle
+    let levelWall38:Rectangle
+    let levelWall39:Rectangle
+    let levelWall40:Rectangle
+    let levelWall41:Rectangle
+    let levelWall42:Rectangle
+    let levelWall43:Rectangle
+    let levelWall44:Rectangle
+    let levelWall45:Rectangle
+    let levelWall46:Rectangle
+    let levelWall47:Rectangle
+    let levelWall48:Rectangle
+    let levelWall49:Rectangle
+    let levelWall50:Rectangle
+    
+
+
+
+
     
     let levelFill:FillStyle
 
@@ -72,10 +102,32 @@ class Walls : RenderableEntity {
         levelWall23 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall24 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelWall25 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
-
-
-
-
+        levelWall26 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall27 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall28 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall29 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall30 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall31 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall32 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall33 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall34 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall35 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall36 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall37 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall38 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall39 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall40 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall41 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall42 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall43 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall44 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall45 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall46 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall47 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall48 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall49 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall50 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        
 
         
         levelFill = FillStyle(color:Color(.blue))
@@ -128,6 +180,15 @@ class Walls : RenderableEntity {
         levelWall9.rect = Rect(topLeft:Point(x:canvasSize.center.x, y:550), size:Size(width:10, height: 100))
         levelRectangles.append(levelWall9)
 
+        levelWall38.rect = Rect(topLeft:Point(x:canvasSize.center.x - 100, y:650), size:Size(width:10, height: 150))
+        levelRectangles.append(levelWall38)
+
+        levelWall39.rect = Rect(topLeft:Point(x:canvasSize.center.x + 100, y:650), size:Size(width:10, height: 150))
+        levelRectangles.append(levelWall39)
+        
+        
+        
+
         levelWall10.rect = Rect(topLeft:Point(x:canvasSize.center.x - 200, y:450), size:Size(width:10, height: 250))
         levelRectangles.append(levelWall10)
         
@@ -164,11 +225,66 @@ class Walls : RenderableEntity {
         levelWall21.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:550), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall21)
 
-        levelWall22.rect = Rect(topLeft:Point(x:canvasSize.center.x - 500, y:550), size:Size(width:10, height: 100))
+        levelWall22.rect = Rect(topLeft:Point(x:canvasSize.center.x - 500, y:250), size:Size(width:10, height: 300))
         levelRectangles.append(levelWall22)
 
+        
+        levelWall23.rect = Rect(topLeft:Point(x:canvasSize.center.x + 500, y:250), size:Size(width:10, height: 300))
+        levelRectangles.append(levelWall23)
 
+        
+        levelWall24.rect = Rect(topLeft:Point(x:canvasSize.center.x, y:750), size:Size(width:10, height: 150))
+        levelRectangles.append(levelWall24)
+
+        
+        levelWall25.rect = Rect(topLeft:Point(x:canvasSize.center.x, y:50), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall25)
+
+        levelWall26.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:150), size:Size(width:200, height: 10))
+        levelRectangles.append(levelWall26)
+
+        
+        levelWall27.rect = Rect(topLeft:Point(x:canvasSize.center.x + 100, y:150), size:Size(width:200, height: 10))
+        levelRectangles.append(levelWall27)
+
+        
+        levelWall28.rect = Rect(topLeft:Point(x:canvasSize.center.x + 200, y:150), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall28)
+
+        
+        levelWall29.rect = Rect(topLeft:Point(x:canvasSize.center.x - 200, y:150), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall29)
+
+        
+        levelWall30.rect = Rect(topLeft:Point(x:canvasSize.center.x + 400, y:250), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall30)
+
+        
+        levelWall31.rect = Rect(topLeft:Point(x:canvasSize.center.x - 500, y:250), size:Size(width:100, height: 10))
+        levelRectangles.append(levelWall31)
+        
+        
+        levelWall32.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:750), size:Size(width:200, height: 10))
+        levelRectangles.append(levelWall32)
+
+        levelWall33.rect = Rect(topLeft:Point(x:canvasSize.center.x - 500, y:750), size:Size(width:200, height: 10))
+        levelRectangles.append(levelWall33)
+
+        levelWall34.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:650), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall34)
+
+        levelWall35.rect = Rect(topLeft:Point(x:canvasSize.center.x - 300, y:750), size:Size(width:10, height: 75))
+        levelRectangles.append(levelWall35)
+
+        levelWall36.rect = Rect(topLeft:Point(x:canvasSize.center.x + 400, y:650), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall36)
+        
+        levelWall37.rect = Rect(topLeft:Point(x:canvasSize.center.x + 300, y:750), size:Size(width:10, height: 75))
+        levelRectangles.append(levelWall37)
+        
+        
     }
+    
     
 
     override func render(canvas:Canvas) {

@@ -116,11 +116,10 @@ class InteractionLayer : Layer {
         canMoveDown = true
         
         for rectangle in wall.levelRectangles{
-<<<<<<< HEAD
             if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft)  && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
-=======
+
             if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
->>>>>>> 2974da16d73ceb43f64ff615dcfe1606f65477f0
+
                 canMoveLeft = false
             }
             if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
@@ -133,20 +132,19 @@ class InteractionLayer : Layer {
                 canMoveDown = false
             }
             
-        }
-<<<<<<< HEAD
+       
         if (playerCenter - blueCenter).x < 0{
             if canMoveLeft == true{
                 blueGhost.ghostLeft()
             }else if canMoveUp == true{
                 blueGhost.ghostUp()
             }
-=======
+
         
          
         if (playerCenter - blueCenter).x < 0 && canMoveLeft{
             blueGhost.ghostLeft()
->>>>>>> 03f3978b0de546eacebd1eb99cc32384a647720c
+
         }
         else if (playerCenter - blueCenter).x > 0 && canMoveRight{
             blueGhost.ghostRight()
@@ -191,4 +189,7 @@ class InteractionLayer : Layer {
 
     
      
+            }
+        }
+    }
 }
