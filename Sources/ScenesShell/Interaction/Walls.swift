@@ -164,6 +164,10 @@ class Walls : RenderableEntity {
         levelWall21.rect = Rect(topLeft:Point(x:canvasSize.center.x - 400, y:550), size:Size(width:100, height: 10))
         levelRectangles.append(levelWall21)
 
+        levelWall22.rect = Rect(topLeft:Point(x:canvasSize.center.x - 500, y:550), size:Size(width:10, height: 100))
+        levelRectangles.append(levelWall22)
+
+
     }
     
 
