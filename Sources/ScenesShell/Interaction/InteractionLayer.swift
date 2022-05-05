@@ -30,6 +30,8 @@ class InteractionLayer : Layer {
     var canMoveRight:Bool
     var canMoveUp:Bool
     var canMoveDown:Bool
+
+    var frame:Int
     
     init() {
 
@@ -40,6 +42,8 @@ class InteractionLayer : Layer {
         canMoveRight = false
         canMoveUp = false
         canMoveDown = false
+
+        frame = 0
         
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Interaction")
@@ -106,36 +110,10 @@ class InteractionLayer : Layer {
         }
         }  */
 
-    func pathFind(rect:Rect) -> String{
+    func ghostMove(ghost:Ghost){
         playerCenter = player.player.center
 
-        blueCenter = blueGhost.ghostRect.center
-
-        canMoveRight = true
-        canMoveLeft = true
-        canMoveUp = true
-        canMoveDown = true
-        for rectangle in wall.levelRectangles{
-            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
-                canMoveLeft = false
-            }
-            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
-                canMoveRight = false
-            }
-            if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && (rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsFully)){
-                canMoveUp = false
-            }
-            if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && (rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsFully)){
-                canMoveDown = false
-            }
-            
-        }
-        return "ok"
-    }
-    override func postCalculate(canvas:Canvas){
-        playerCenter = player.player.center
-
-        blueCenter = blueGhost.ghostRect.center
+        let ghostCenter = ghost.ghostRect.center
 
         canMoveRight = true
         canMoveLeft = true
@@ -143,39 +121,77 @@ class InteractionLayer : Layer {
         canMoveDown = true
         
         for rectangle in wall.levelRectangles{
-            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
+            if rectangle.rect.containment(target:ghost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:ghost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.leftBoundingRect()).contains(.overlapsFully)){
                 canMoveLeft = false
             }
-            if rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.rightBoundingRect()).contains(.overlapsFully)){
+            if rectangle.rect.containment(target:ghost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:ghost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.rightBoundingRect()).contains(.overlapsFully)){
                 canMoveRight = false
             }
-            if rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsBottom) && (rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.topBoundingRect()).contains(.overlapsFully)){
+            if rectangle.rect.containment(target:ghost.topBoundingRect()).contains(.overlapsBottom) && (rectangle.rect.containment(target:ghost.topBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.topBoundingRect()).contains(.overlapsFully)){
                 canMoveUp = false
             }
-            if rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsTop) && (rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.bottomBoundingRect()).contains(.overlapsFully)){
+            if rectangle.rect.containment(target:ghost.bottomBoundingRect()).contains(.overlapsTop) && (rectangle.rect.containment(target:ghost.bottomBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.bottomBoundingRect()).contains(.overlapsFully)){
                 canMoveDown = false
             }
             
         }
-        if (playerCenter - blueCenter).x < 0{
+        if (playerCenter - ghostCenter).x < 0{
             if canMoveLeft == true{
-                blueGhost.ghostLeft()
-            }else if canMoveUp == true{
+                ghost.ghostLeft()
+            }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
                 blueGhost.ghostUp()
+            }else if canMoveDown == true && (playerCenter - ghostCenter).y > 0{
+                ghost.ghostDown()
             }
+        }else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
+            ghost.ghostUp()
         }
-        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
-            blueGhost.ghostLeft()
+        else if (playerCenter - ghostCenter).y > 0 && canMoveDown{
+            ghost.ghostDown()
         }
-        else if (playerCenter - blueCenter).x > 0 && canMoveRight{
-            blueGhost.ghostRight()
+        if (playerCenter - ghostCenter).x > 0{
+            if canMoveRight == true{
+                ghost.ghostRight()
+            }else if canMoveDown == true && (playerCenter - ghostCenter).y > 0{
+                ghost.ghostDown()
+            }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
+                ghost.ghostUp()
+            }
+        }else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
+            ghost.ghostUp()
         }
-        else if (playerCenter - blueCenter).y < 0 && canMoveUp{
-            blueGhost.ghostUp()
+        else if (playerCenter - ghostCenter).y > 0 && canMoveDown{
+            ghost.ghostDown()
         }
-        else if (playerCenter - blueCenter).y > 0 && canMoveDown{
-            blueGhost.ghostDown()
+    }
+    
+    override func postCalculate(canvas:Canvas){
+        frame += 1 
+        let canvasSize = canvas.canvasSize!
+
+        if frame == 1{
+            blueGhost.move(to: canvasSize.center - Point(x:75, y: 175))
         }
+        ghostMove(ghost:blueGhost)
+        if frame == 100{
+            redGhost.move(to: canvasSize.center - Point(x:-75, y:175))
+        }
+        if frame >= 100{
+            ghostMove(ghost:redGhost)
+        }
+        if frame == 200{
+            orangeGhost.move(to: canvasSize.center - Point(x:75, y:175))
+        }
+        if frame >= 200{
+            ghostMove(ghost:orangeGhost)
+        }
+        if frame == 300{
+            pinkGhost.move(to: canvasSize.center - Point(x:-75, y:175))
+        }
+        if frame >= 300{
+            ghostMove(ghost:pinkGhost)
+        }
+        
         // touchingCoin()
         touchingWall()
 
