@@ -1,4 +1,4 @@
-/* import Igis
+import Igis
 import Scenes
 
 class Coins : RenderableEntity {
@@ -16,7 +16,7 @@ class Coins : RenderableEntity {
     init() {
         // Initialize Objectx
 
-     //   coin = Ellipse(center:Point.zero, radiusX:5, radiusY:5, fillMode:.fillAndStroke)
+        coin = Ellipse(center:Point.zero, radiusX:5, radiusY:5, fillMode:.fillAndStroke)
         
         
     }
@@ -25,8 +25,8 @@ class Coins : RenderableEntity {
     
     override func setup(canvasSize:Size, canvas:Canvas) {
         coin.center = Point(x:100, y:100)
-        let xCoins = 40
-        let yCoins = 19
+        let xCoins = 5
+        let yCoins = 6
         for y in 0...yCoins{
             for x in 0...xCoins{
                 coin.center += Point(x:40, y:0)
@@ -54,4 +54,4 @@ class Coins : RenderableEntity {
 
     
 }
- */
+ 
