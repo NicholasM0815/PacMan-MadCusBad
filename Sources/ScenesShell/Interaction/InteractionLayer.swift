@@ -57,11 +57,10 @@ class InteractionLayer : Layer {
         
         insert(entity:player, at:.front)
 
-        insert(entity:coin, at:.back)
-        
         insert(entity:wall, at:.back)
-
-       
+        
+        insert(entity:coin, at:.back)
+      
     }
 
     override func preSetup(canvasSize:Size, canvas:Canvas){
@@ -74,10 +73,19 @@ class InteractionLayer : Layer {
         orangeGhost.flash(for: 30)
         redGhost.flash(for: 30)
         pinkGhost.flash(for:30)
+
+        
     }
     
-    func anogusSus() {
-        print("he he he ha")
+    func deleteCoinTouchingWall() {
+        for rectangle in wall.levelRectangles{
+            for i in 0...coin.coins.count-1{
+                if rectangle.rect.containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
+                    coin.coins[i].1 = false
+                    
+                }
+            }
+        }
     }
     
     func touchingWall() {
@@ -139,13 +147,13 @@ class InteractionLayer : Layer {
             if canMoveLeft == true{
                 ghost.ghostLeft(7)
             }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
-                blueGhost.ghostUp(3)
+                ghost.ghostUp(3)
             }else if canMoveDown == true && (playerCenter - ghostCenter).y > 0{
                 ghost.ghostDown(3)
             }
         }
         else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
-            ghost.ghostUp(9)
+            ghost.ghostUp(7)
         }
         else if (playerCenter - ghostCenter).y > 0 && canMoveDown{
             ghost.ghostDown(5)
@@ -162,6 +170,9 @@ class InteractionLayer : Layer {
     }
     
     override func postCalculate(canvas:Canvas){
+        if frame == 0{
+            deleteCoinTouchingWall()
+        }
         frame += 1 
         let canvasSize = canvas.canvasSize!
 
