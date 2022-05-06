@@ -121,18 +121,7 @@ class InteractionLayer : Layer {
         canMoveDown = true
         
         for rectangle in wall.levelRectangles{
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft)  && rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact){
-
-            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
-
-=======
-            if rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:blueGhost.leftBoundingRect()).contains(.overlapsFully)){
->>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
-=======
             if rectangle.rect.containment(target:ghost.leftBoundingRect()).contains(.overlapsLeft) && (rectangle.rect.containment(target:ghost.leftBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.leftBoundingRect()).contains(.overlapsFully)){
->>>>>>> d872037023a90ee006a47ea86219ccdeaf04c4e4
                 canMoveLeft = false
             }
             if rectangle.rect.containment(target:ghost.rightBoundingRect()).contains(.overlapsRight) && (rectangle.rect.containment(target:ghost.rightBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.rightBoundingRect()).contains(.overlapsFully)){
@@ -143,18 +132,10 @@ class InteractionLayer : Layer {
             }
             if rectangle.rect.containment(target:ghost.bottomBoundingRect()).contains(.overlapsTop) && (rectangle.rect.containment(target:ghost.bottomBoundingRect()).contains(.contact) || rectangle.rect.containment(target:ghost.bottomBoundingRect()).contains(.overlapsFully)){
                 canMoveDown = false
-            }
-            
-<<<<<<< HEAD
-       
-=======
+            }  
         }
-<<<<<<< HEAD
->>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
-        if (playerCenter - blueCenter).x < 0{
-=======
+        
         if (playerCenter - ghostCenter).x < 0{
->>>>>>> d872037023a90ee006a47ea86219ccdeaf04c4e4
             if canMoveLeft == true{
                 ghost.ghostLeft()
             }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
@@ -162,26 +143,12 @@ class InteractionLayer : Layer {
             }else if canMoveDown == true && (playerCenter - ghostCenter).y > 0{
                 ghost.ghostDown()
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        
-         
-        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
-            blueGhost.ghostLeft()
-
-=======
         }
-        if (playerCenter - blueCenter).x < 0 && canMoveLeft{
-            blueGhost.ghostLeft()
->>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
-=======
-        }else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
+        else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
             ghost.ghostUp()
         }
         else if (playerCenter - ghostCenter).y > 0 && canMoveDown{
             ghost.ghostDown()
->>>>>>> d872037023a90ee006a47ea86219ccdeaf04c4e4
         }
         if (playerCenter - ghostCenter).x > 0{
             if canMoveRight == true{
@@ -191,11 +158,6 @@ class InteractionLayer : Layer {
             }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
                 ghost.ghostUp()
             }
-        }else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
-            ghost.ghostUp()
-        }
-        else if (playerCenter - ghostCenter).y > 0 && canMoveDown{
-            ghost.ghostDown()
         }
     }
     
@@ -232,11 +194,7 @@ class InteractionLayer : Layer {
     
 
     
-<<<<<<< HEAD
      
-            }
-        }
-=======
->>>>>>> 03a1d3075c43d4e46196de36fe2549b07f43a9dd
-    }
-}
+   }
+  }
+  
