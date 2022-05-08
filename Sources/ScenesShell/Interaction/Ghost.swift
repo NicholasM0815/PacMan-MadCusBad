@@ -37,17 +37,17 @@ class Ghost : RenderableEntity {
         self.ghostRect.topLeft = point
     }
 
-    func ghostUp() {
-        self.ghostRect.topLeft.y -= 5
+    func ghostUp(_ amount:Int) {
+        self.ghostRect.topLeft.y -= amount
     }
-    func ghostDown() {
-        self.ghostRect.topLeft.y += 5
+    func ghostDown(_ amount:Int) {
+        self.ghostRect.topLeft.y += amount
     }
-    func ghostLeft() {
-        self.ghostRect.topLeft.x -= 5
+    func ghostLeft(_ amount:Int) {
+        self.ghostRect.topLeft.x -= amount
     }
-    func ghostRight() {
-        self.ghostRect.topLeft.x += 5
+    func ghostRight(_ amount:Int) {
+        self.ghostRect.topLeft.x += amount
     }
 
 

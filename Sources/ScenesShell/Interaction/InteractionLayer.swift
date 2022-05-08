@@ -57,11 +57,10 @@ class InteractionLayer : Layer {
         
         insert(entity:player, at:.front)
 
-        insert(entity:coin, at:.back)
-        
         insert(entity:wall, at:.back)
-
-       
+        
+        insert(entity:coin, at:.back)
+      
     }
 
     override func preSetup(canvasSize:Size, canvas:Canvas){
@@ -74,10 +73,19 @@ class InteractionLayer : Layer {
         orangeGhost.flash(for: 30)
         redGhost.flash(for: 30)
         pinkGhost.flash(for:30)
+
+        
     }
     
-    func anogusSus() {
-        print("he he he ha")
+    func deleteCoinTouchingWall() {
+        for rectangle in wall.levelRectangles{
+            for i in 0...coin.coins.count-1{
+                if rectangle.rect.containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
+                    coin.coins[i].1 = false
+                    
+                }
+            }
+        }
     }
     
     func touchingWall() {
@@ -137,31 +145,34 @@ class InteractionLayer : Layer {
         
         if (playerCenter - ghostCenter).x < 0{
             if canMoveLeft == true{
-                ghost.ghostLeft()
+                ghost.ghostLeft(7)
             }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
-                blueGhost.ghostUp()
+                ghost.ghostUp(3)
             }else if canMoveDown == true && (playerCenter - ghostCenter).y > 0{
-                ghost.ghostDown()
+                ghost.ghostDown(3)
             }
         }
         else if (playerCenter - ghostCenter).y < 0 && canMoveUp{
-            ghost.ghostUp()
+            ghost.ghostUp(7)
         }
         else if (playerCenter - ghostCenter).y > 0 && canMoveDown{
-            ghost.ghostDown()
+            ghost.ghostDown(5)
         }
         if (playerCenter - ghostCenter).x > 0{
             if canMoveRight == true{
-                ghost.ghostRight()
+                ghost.ghostRight(6)
             }else if canMoveDown == true && (playerCenter - ghostCenter).y > 0{
-                ghost.ghostDown()
+                ghost.ghostDown(3)
             }else if canMoveUp == true && (playerCenter - ghostCenter).y < 0{
-                ghost.ghostUp()
+                ghost.ghostUp(4)
             }
         }
     }
     
     override func postCalculate(canvas:Canvas){
+        if frame == 0{
+            deleteCoinTouchingWall()
+        }
         frame += 1 
         let canvasSize = canvas.canvasSize!
 
