@@ -30,6 +30,7 @@ class Ghost : RenderableEntity {
         super.init(name:"Ghost")
     }
 
+    // makes the ghost flash, this would have been used if we implemented the ghost being eaten
     func flash(for amount:Int){
         self.flashFor = amount * 20
         self.flashing = true
@@ -39,32 +40,32 @@ class Ghost : RenderableEntity {
         //empty
     }
 
+    //moves the ghost to a specified point
     func move(to point:Point){
         self.ghostRect.topLeft = point
     }
 
+    //moves the ghost up
     func ghostUp(_ amount:Int) {
         self.ghostRect.topLeft.y -= amount
     }
+
+    //moves the ghost down
     func ghostDown(_ amount:Int) {
         self.ghostRect.topLeft.y += amount
     }
+
+    //moves the ghost left
     func ghostLeft(_ amount:Int) {
         self.ghostRect.topLeft.x -= amount
     }
+
+    //moves the ghost right
     func ghostRight(_ amount:Int) {
         self.ghostRect.topLeft.x += amount
     }
 
-
-
-    
-    func ghostDie(canvasSize:Size) {
-        self.ghostRect.topLeft = canvasSize.center
-    }
-
-    
-    
+    //These four functions make bounding rectangles that help detect if the ghost will hit a wall when it moves.
     func topBoundingRect() -> Rect{
         return Rect(topLeft:self.ghostRect.topLeft - Point(x:0, y:self.ghostRect.size.height), size:self.ghostRect.size)
     }

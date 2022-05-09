@@ -7,9 +7,6 @@ import Scenes
  */
 
 class InteractionLayer : Layer {
-    // let ball = Ball()
-    // let leftPaddle = Paddle(position:.left)
-    // let rightPaddle = Paddle(position:.right)
     let wall = Walls()
 
     let player = Player()
@@ -82,7 +79,8 @@ class InteractionLayer : Layer {
 
         
     }
-    
+
+    // deletes the coins that were touching the walls so that there isn't any overlapping coins and walls.
     func deleteCoinTouchingWall() {
         var eatableCoins = coin.coins.count
         for rectangle in wall.levelRectangles{
@@ -95,7 +93,8 @@ class InteractionLayer : Layer {
         }
         scoreboard.maxScore = eatableCoins/4 * 10
     }
-    
+
+    //checks if player is touching a wall, if the player is, it stops the player and sends them back to where they were.
     func touchingWall() {
         for rectangle in wall.levelRectangles{
             if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
@@ -117,36 +116,43 @@ class InteractionLayer : Layer {
         }
     }
 
-    
+    // checks if player is touching coin
     func touchingCoin(canvas:Canvas) {
         for i in 0...coin.coins.count-1{
             if player.player.boundingRect().containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
                 if coin.coins[i].1 == true{
-                    coin.coins[i].1 = false
-                    scoreboard.addScore(10)
-                    if scoreboard.score == scoreboard.maxScore{
-                        player.gameOver(canvas:canvas, win:true)
+                    coin.coins[i].1 = false //makes coin dissapear
+                    scoreboard.addScore(10) //adds to score if player is touching coin
+                    if scoreboard.score == scoreboard.maxScore{ //checks if score is equal to the pre determined max score
+                        player.gameOver(canvas:canvas, win:true) //sets the game to over, player wins
+                        player.die() //send the player away so that the ghost cannot kill the player after the player has won
                     }
                 }
             }
         }
     }
 
+    // checks if player is touching a ghost
     func touchingGhost(canvas:Canvas) {
         if player.player.boundingRect().containment(target:orangeGhost.ghostRect).contains(.contact){
-            player.gameOver(canvas:canvas, win:false)
+            player.gameOver(canvas:canvas, win:false) //ends the game. player loses
+            player.die() //sends the player away
         }
         if player.player.boundingRect().containment(target:pinkGhost.ghostRect).contains(.contact){
             player.gameOver(canvas:canvas, win:false)
+            player.die()
         }
         if player.player.boundingRect().containment(target:redGhost.ghostRect).contains(.contact){
             player.gameOver(canvas:canvas, win:false)
+            player.die()
         }
         if player.player.boundingRect().containment(target:blueGhost.ghostRect).contains(.contact){
             player.gameOver(canvas:canvas, win:false)
+            player.die()
         }
     }
 
+    //psuedo pathfinding, depending on the difference of the ghost and player cooridnates and whether or not if there is a wall in the way of the planned movement
     func ghostMove(ghost:Ghost){
         playerCenter = player.player.center
 

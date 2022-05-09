@@ -17,6 +17,7 @@ class Scoreboard : RenderableEntity{
         super.init(name:"Scoreboard")
     }
 
+    // adds specified score so that the scoreboard will display it.
     func addScore(_ amount:Int){
         self.score += amount
     }

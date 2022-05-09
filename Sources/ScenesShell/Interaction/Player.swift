@@ -35,6 +35,7 @@ class Player : RenderableEntity, KeyDownHandler {
         
     }
 
+    //Function creates a black end screen that tells the player if they won or lost
     func gameOver(canvas:Canvas, win:Bool){
         let canvasSize = canvas.canvasSize!
         if win == true{
@@ -52,6 +53,10 @@ class Player : RenderableEntity, KeyDownHandler {
             self.gameOver = true
         }
     }
+
+    func die(){
+        player.center = Point(x:10000, y:0)
+    }
     
     override func setup(canvasSize:Size, canvas:Canvas) {
 
@@ -61,17 +66,15 @@ class Player : RenderableEntity, KeyDownHandler {
     }
 
     override func render(canvas:Canvas){
-        if gameOver == true{
-            self.gameOver(canvas:canvas, win:win)
+        if gameOver == true{  //check if game is over
+            self.gameOver(canvas:canvas, win:win) //render end screen with win or loss message
         }else{
             move()
             canvas.render(FillStyle(color:Color(.yellow)), player)
         }
     }
     
-    func die() {
-        player.center = Point(x:99999,y:99999)
-    }
+    //Depending on direction the player ellipse will move in that direction
     func move(){
         switch direction{
         case 0:
