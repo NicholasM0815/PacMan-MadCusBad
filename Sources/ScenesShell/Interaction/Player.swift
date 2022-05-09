@@ -14,6 +14,9 @@ class Player : RenderableEntity, KeyDownHandler {
     let downKey:String
     let leftKey:String
     let rightKey:String
+
+    var gameOver:Bool
+    var win:Bool
     
     init() {
         // Initialize Objectx
@@ -26,10 +29,29 @@ class Player : RenderableEntity, KeyDownHandler {
         leftKey = "ArrowLeft"
         rightKey = "ArrowRight"
         
+        //game over objects
+        gameOver = false
+        win = false
         
     }
 
-    
+    func gameOver(canvas:Canvas, win:Bool){
+        let canvasSize = canvas.canvasSize!
+        if win == true{
+            canvas.render(FillStyle(color:Color(.black)),Rectangle(rect:Rect(topLeft:Point(x:0,y:0), size:canvasSize), fillMode:.fill))
+            let winText = Text(location:canvasSize.center - Point(x:150, y:-50), text:"You Won!", fillMode:.fill)
+            winText.font = "50pt Arial"
+            canvas.render(FillStyle(color:Color(.white)), winText)
+            self.gameOver = true
+            self.win = true
+        }else{
+            canvas.render(FillStyle(color:Color(.black)),Rectangle(rect:Rect(topLeft:Point(x:0,y:0), size:canvasSize), fillMode:.fill))
+            let winText = Text(location:canvasSize.center - Point(x:150, y:-50), text:"You Lost!", fillMode:.fill)
+            winText.font = "50pt Arial"
+            canvas.render(FillStyle(color:Color(.white)), winText)
+            self.gameOver = true
+        }
+    }
     
     override func setup(canvasSize:Size, canvas:Canvas) {
 
@@ -39,8 +61,12 @@ class Player : RenderableEntity, KeyDownHandler {
     }
 
     override func render(canvas:Canvas){
-        move()
-        canvas.render(FillStyle(color:Color(.yellow)), player)
+        if gameOver == true{
+            self.gameOver(canvas:canvas, win:win)
+        }else{
+            move()
+            canvas.render(FillStyle(color:Color(.yellow)), player)
+        }
     }
     
     func die() {

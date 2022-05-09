@@ -34,7 +34,6 @@ class Coins : RenderableEntity {
             }
             coin.center += Point(x:-((xCoins+1) * 40), y:40)
         }
-        print(coins.count)
     }
     
     override func render(canvas:Canvas){

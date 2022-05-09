@@ -11,6 +11,9 @@ class Ghost : RenderableEntity {
     var flashing:Bool
     var flashFor:Int
     var flashColor:FillStyle
+
+    var gameOver:Bool
+    var win:Bool
     
     init(color: Color) {
         ghostColor = FillStyle(color:color)
@@ -20,6 +23,9 @@ class Ghost : RenderableEntity {
         flashing = false
         flashFor = 0
         flashColor = FillStyle(color:Color(red:192, green:192, blue:192))
+
+        gameOver = false
+        win = false
         
         super.init(name:"Ghost")
     }
@@ -57,8 +63,7 @@ class Ghost : RenderableEntity {
         self.ghostRect.topLeft = canvasSize.center
     }
 
-
-
+    
     
     func topBoundingRect() -> Rect{
         return Rect(topLeft:self.ghostRect.topLeft - Point(x:0, y:self.ghostRect.size.height), size:self.ghostRect.size)
@@ -77,20 +82,21 @@ class Ghost : RenderableEntity {
     }
     
     override func render(canvas:Canvas){
-       ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
-       if flashing{
-            if flashFor % 5 == 0 {
-                canvas.render(flashColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
+        
+            ghostRectangle = Rectangle(rect:ghostRect, fillMode:.fillAndStroke)
+            if flashing{
+                if flashFor % 5 == 0 {
+                    canvas.render(flashColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
+                }else{
+                    canvas.render(ghostColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
+                }
+                flashFor -= 1
+                if flashFor == 0{
+                    flashing = false
+                }
             }else{
                 canvas.render(ghostColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
             }
-            flashFor -= 1
-            if flashFor == 0{
-                flashing = false
-            }
-        }else{
-            canvas.render(ghostColor, StrokeStyle(color:Color(.gray)), LineWidth(width:2), ghostRectangle)
-       }
-       //canvas.render(FillStyle(color:Color(.white)), Rectangle(rect:self.bottomBoundingRect(), fillMode:.fill))
-    }
+            //canvas.render(FillStyle(color:Color(.white)), Rectangle(rect:self.bottomBoundingRect(), fillMode:.fill))
+        }   
 }

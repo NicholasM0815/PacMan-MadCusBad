@@ -20,6 +20,8 @@ class InteractionLayer : Layer {
     let orangeGhost = Ghost(color:Color(.orange))
     let redGhost = Ghost(color:Color(.red))
     let pinkGhost = Ghost(color:Color(.hotpink))
+
+    let scoreboard = Scoreboard()
     
     var enableHitTesting = false
 
@@ -49,7 +51,7 @@ class InteractionLayer : Layer {
         super.init(name:"Interaction")
         
         // We insert our RenderableEntities in the constructor
-        // insert(entity:ball, at:.front)
+        
         insert(entity:blueGhost, at:.front)
         insert(entity:orangeGhost, at:.front)
         insert(entity:redGhost, at:.front)
@@ -60,6 +62,8 @@ class InteractionLayer : Layer {
         insert(entity:wall, at:.back)
         
         insert(entity:coin, at:.back)
+
+        insert(entity:scoreboard, at:.back)
       
     }
 
@@ -69,6 +73,8 @@ class InteractionLayer : Layer {
         redGhost.move(to:canvasSize.center - Point(x: 2 * blueGhost.ghostRect.size.width, y: 2 *  blueGhost.ghostRect.size.height))
         pinkGhost.move(to:canvasSize.center - Point(x: -2 * blueGhost.ghostRect.size.width, y: 2 *  blueGhost.ghostRect.size.height))
 
+        scoreboard.scoreboard.location = canvasSize.center - Point(x:150, y:-50)
+        
         blueGhost.flash(for: 30)
         orangeGhost.flash(for: 30)
         redGhost.flash(for: 30)
@@ -78,14 +84,16 @@ class InteractionLayer : Layer {
     }
     
     func deleteCoinTouchingWall() {
+        var eatableCoins = coin.coins.count
         for rectangle in wall.levelRectangles{
             for i in 0...coin.coins.count-1{
                 if rectangle.rect.containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
                     coin.coins[i].1 = false
-                    
+                    eatableCoins -= 1
                 }
             }
         }
+        scoreboard.maxScore = eatableCoins/4 * 10
     }
     
     func touchingWall() {
@@ -110,13 +118,34 @@ class InteractionLayer : Layer {
     }
 
     
-    func touchingCoin() {
+    func touchingCoin(canvas:Canvas) {
         for i in 0...coin.coins.count-1{
             if player.player.boundingRect().containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
-                coin.coins[i].1 = false
+                if coin.coins[i].1 == true{
+                    coin.coins[i].1 = false
+                    scoreboard.addScore(10)
+                    if scoreboard.score == scoreboard.maxScore{
+                        player.gameOver(canvas:canvas, win:true)
+                    }
+                }
             }
         }
-    }  
+    }
+
+    func touchingGhost(canvas:Canvas) {
+        if player.player.boundingRect().containment(target:orangeGhost.ghostRect).contains(.contact){
+            player.gameOver(canvas:canvas, win:false)
+        }
+        if player.player.boundingRect().containment(target:pinkGhost.ghostRect).contains(.contact){
+            player.gameOver(canvas:canvas, win:false)
+        }
+        if player.player.boundingRect().containment(target:redGhost.ghostRect).contains(.contact){
+            player.gameOver(canvas:canvas, win:false)
+        }
+        if player.player.boundingRect().containment(target:blueGhost.ghostRect).contains(.contact){
+            player.gameOver(canvas:canvas, win:false)
+        }
+    }
 
     func ghostMove(ghost:Ghost){
         playerCenter = player.player.center
@@ -199,8 +228,9 @@ class InteractionLayer : Layer {
             ghostMove(ghost:pinkGhost)
         }
         
-        touchingCoin()
+        touchingCoin(canvas:canvas)
         touchingWall()
+        touchingGhost(canvas:canvas)
 
     
 
