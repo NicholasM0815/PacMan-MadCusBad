@@ -1,0 +1,51 @@
+import Igis
+import Scenes
+import Foundation
+
+/*
+ This class is responsible for rendering the background.
+ */
+
+class Background : RenderableEntity {
+    let fillStyle : FillStyle
+    let rectangle : Rectangle
+
+    let audio : Audio
+    
+    var didAudio = false
+    
+    init() {
+        // Initialize Objects
+        fillStyle = FillStyle(color:Color(.black))
+        rectangle = Rectangle(rect:Rect.zero, fillMode:.fill)
+
+        var audios : Array<URL> = []
+
+        guard let audioURL4 = URL(string:"https://instrumentalfx.co/wp-content/upload/11/The-Benny-Hill-Show-Theme-Song.mp3") else {
+            fatalError("Failled to fetch Benny Hill Theme")
+        }
+
+        //audios.append(audioURL3)
+        audios.append(audioURL4)
+        
+        audio = Audio(sourceURL:audios.randomElement()!, shouldLoop:true) 
+        
+        // Using a meaningful name can be helpful for debugging
+        super.init(name:"Background")
+    }
+
+    override func setup(canvasSize:Size, canvas:Canvas) {
+        rectangle.rect.size = canvasSize
+        canvas.setup(audio)
+    }
+
+    override func render(canvas:Canvas) {
+        // render the fillstyle modifier before the rectangle object
+        canvas.render(fillStyle, rectangle)
+        if audio.isReady && !didAudio{
+            print("playing Audio")
+            canvas.render(audio)
+            didAudio = true
+            }
+    }
+}
